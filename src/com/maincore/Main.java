@@ -79,5 +79,6 @@ public class Main {
          }
         }
         System.out.println(wynik);
+        nominaly.remove(wynik);
     }
 }
