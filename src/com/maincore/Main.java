@@ -15,7 +15,7 @@ public class Main {
         boolean tillStatus = true;
         boolean userPayStatus = true;
         double userCashSuma = 0;
-        String wynik = "Wydano: ";
+        StringBuilder wynik = new StringBuilder("Wydano: ");
 
 
 
@@ -39,7 +39,7 @@ public class Main {
 
         while (tillStatus) {
             System.out.println("Podaj Cene towaru: ");
-            double userPick = Double.valueOf(sc.nextLine());
+            double userPick = Double.parseDouble(sc.nextLine());
             if (userPick > 0) {
                 sumaCen += userPick;
             } else if (userPick < 0) {
@@ -56,7 +56,7 @@ public class Main {
 
         while (userPayStatus && sumaCen > 0){
             System.out.println("Podaj nominały, jakim chcesz zapłacić: ");
-            double userCash = Double.valueOf(sc.nextLine());
+            double userCash = Double.parseDouble(sc.nextLine());
 
             if(userCash > 0){
                 userCashSuma += userCash;
@@ -74,7 +74,7 @@ public class Main {
         for(int i = 0; (i < nominaly.size()) && (restCashCount > 0.00); i++){
          if(restCashCount >= nominaly.get(i)){
              int temp = (int)Math.floor(restCashCount/nominaly.get(i));
-             wynik += nominaly.get(i) + "PLN " +temp + "\n";
+             wynik.append(nominaly.get(i)).append("PLN ").append(temp).append("\n");
              restCashCount = (double) Math.round(100*(restCashCount-(temp*nominaly.get(i))))/100;
          }
         }
